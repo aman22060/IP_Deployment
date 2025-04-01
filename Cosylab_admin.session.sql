@@ -1,0 +1,40 @@
+ALTER TABLE Publications
+ADD COLUMN addComments VARCHAR(255);
+SELECT * FROM Publications;
+
+INSERT INTO Publications (id, Title, Titlelink, Year, Anchor_text, Tags, addComments) VALUES
+(1, 'Dish detection in food platters: A framework for automated diet logging and nutrition management', 'https://arxiv.org/abs/2305.07552', 2023, '8th International Conference on Computer Vision & Image Processing (CVIP-2023)', 'Computer Vision', ''),
+(2, 'Graph Signal Processing on protein residue networks helps in studying its biophysical properties', 'https://www.sciencedirect.com/science/article/pii/S0378437123001589', 2023, 'Physica A', 'Complex Networks', ''),
+(3, 'RAV1 family members function as transcriptional regulators and play a positive role in plant disease resistance', 'https://onlinelibrary.wiley.com/doi/abs/10.1111/tpj.16114', 2023, 'The Plant Journal', 'Plant Science', ''),
+(4, 'Investigating the link between miR-34a-5p and TLR6 signaling in sepsis-induced ARDS', 'https://link.springer.com/article/10.1007/s13205-023-03700-1', 2023, '3 Biotech', 'Complex Disease', ''),
+(5, 'Camouflage detection and its association with cognitive style: a functional connectivity study', 'https://www.liebertpub.com/doi/abs/10.1089/brain.2023.0044', 2023, 'Brain Connectivity', 'Brain Networks', ''),
+(6, 'Ratatouille: A tool for Novel Recipe Generation', 'https://ieeexplore.ieee.org/document/9814641', 2022, 'IEEE 38th International Conference on Data Engineering Workshops (ICDEW)', 'AI', ''),
+(7, 'Object Detection in Indian Food Platters using Transfer Learning with YOLOv4', 'https://ieeexplore.ieee.org/document/9814702', 2022, 'IEEE 38th International Conference on Data Engineering Workshops (ICDEW)', 'Best Paper Award', ''),
+(8, 'Perturbing Coupled Multivariable Systems', 'https://link.springer.com/chapter/10.1007/978-3-031-33050-6_19', 2022, 'International Symposium on Mathematical and Computational Biology', 'Nonlinear Dynamics', ''),
+(9, 'FoodPrint: Computing Carbon Footprint of Recipes', 'https://ieeexplore.ieee.org/document/9814678', 2022, 'IEEE 38th International Conference on Data Engineering Workshops (ICDEW)', 'Climate Change', ''),
+(10, 'Computational gastronomy: A data science approach to food', 'https://link.springer.com/article/10.1007/s12038-021-00248-1', 2022, 'Journal of Biosciences', 'Review', ''),
+(11, 'Building Hierarchically Disentangled Language Models for Text Generation with Named Entities', 'https://aclanthology.org/2020.coling-main.3/', 2020, '28th International Conference on Computational Linguistics COLING', 'AI', ''),
+(12, 'Nutritional profile estimation in cooking recipes', 'https://ieeexplore.ieee.org/abstract/document/9094134', 2020, 'IEEE 36th International Conference on Data Engineering Workshops', 'CGAS', ''),
+(13, 'A named entity based approach to model recipes', 'https://ieeexplore.ieee.org/abstract/document/9094103', 2020, 'IEEE 36th International Conference on Data Engineering Workshops', 'NLP', ''),
+(14, 'Classification of Cuisines from Sequentially Structured Recipes', 'https://ieeexplore.ieee.org/abstract/document/9094114', 2020, 'IEEE 36th International Conference on Data Engineering Workshops', 'AL, ML', ''),
+(15, 'Hierarchical clustering of world cuisines', 'https://ieeexplore.ieee.org/abstract/document/9094121', 2020, 'IEEE 36th International Conference on Data Engineering Workshops', 'CGAS', ''),
+(16, 'RecipeDB: A resource for exploring recipes', 'https://academic.oup.com/database/article/doi/10.1093/database/baaa077/6006228', 2020, 'Database', '', ''),
+(17, 'BitterSweet: building machine learning models for predicting the bitter and sweet taste of small molecules', 'https://www.nature.com/articles/s41598-019-43664-y', 2019, 'Scientific Reports', 'AI, ML', ''),
+(18, 'Computational models for the evolution of world cuisines', 'https://ieeexplore.ieee.org/abstract/document/8750964', 2019, 'IEEE 35th International Conference on Data Engineering Workshops', 'CGAS', ''),
+(19, 'Culinary evolution models for Indian cuisines', 'https://www.sciencedirect.com/science/article/pii/S0378437118302656', 2018, 'Physica A: Statistical Mechanics and its Applications', 'CGAS', ''),
+(20, 'Data-driven investigations of culinary patterns in traditional recipes across the world', 'https://ieeexplore.ieee.org/abstract/document/8402036', 2018, 'IEEE 34th International Conference on Data Engineering Workshops', 'CGAS', ''),
+(21, 'Data-driven analysis of biomedical literature suggests broad-spectrum benevolence of culinary herbs and spices', 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0198030', 2018, 'PLoS One', 'Health', ''),
+(22, 'A hierarchical anatomical classification schema for prediction of phenotypic side effects', 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0193959', 2018, 'PLoS One', 'Health, Maths', ''),
+(23, 'FlavorDB: a database of flavor molecules', 'https://academic.oup.com/nar/article/46/D1/D1210/4559748', 2018, 'Nucleic Acids Research, Oxford University Press', 'Database', ''),
+(24, 'SpiceRx: an integrated resource for the health impacts of culinary spices and herbs', 'https://www.biorxiv.org/content/10.1101/273599v1.abstract', 2018, 'bioRxiv', 'Health', ''),
+(25, 'Robust Sigmoidal Control Response of C. elegans Neuronal Network', 'https://link.springer.com/chapter/10.1007/978-3-319-60840-2_29', 2017, 'International Joint Conference on Rough Sets', 'Brain Networks', ''),
+(26, 'Identification of critical regulatory genes in cancer signaling network using controllability analysis', 'https://www.sciencedirect.com/science/article/pii/S0378437117300699', 2017, 'Physica A: Statistical Mechanics and its Applications', 'Cancer', ''),
+(27, 'A distance constrained synaptic plasticity model of C. elegans neuronal network', 'https://www.sciencedirect.com/science/article/pii/S0378437116308603', 2016, 'Physica A', 'Brain Networks', ''),
+(28, 'Graph theoretical biomarkers for schizophrenic brain functional networks', 'https://ieeexplore.ieee.org/document/7980593', 2016, 'International Conference on Signal Processing and Communication', 'Brain Networks', ''),
+(29, 'Controllability of human cancer signaling network', 'https://ieeexplore.ieee.org/document/7980607', 2016, 'International Conference on Signal Processing and Communication', 'Cancer', ''),
+(30, 'Differential network analysis reveals evolutionary complexity in secondary metabolism of Rauvolfia serpentina over Catharanthus roseus', 'http://journal.frontiersin.org/article/10.3389/fpls.2016.01229/abstract', 2016, 'Frontiers in Plant Science', 'Plant Science', ''),
+(31, 'Control of neuronal network in Caenorhabditis elegans', 'http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0139204', 2015, 'PLoS ONE', 'Brain Networks', ''),
+(32, 'Analysis of food pairing in regional cuisines of India', 'http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0139539', 2016, 'PLoS ONE', 'Food Pairing', ''),
+(33, 'Phenotypic side effects prediction by optimizing correlation with chemical and target profiles of drugs', 'https://pubs.rsc.org/en/content/articlelanding/2015/mb/c5mb00312a', 2015, 'Molecular Biosystems (Royal Society of Chemistry)', 'Drug Discovery', ''),
+(34, 'SerpentinaDB: a database of plant-derived molecules of Rauvolfia serpentina', 'http://www.biomedcentral.com/1472-6882/15/262', 2015, 'BMC Complementary and Alternative Medicine', 'Database', '');
+

@@ -1,0 +1,406 @@
+{
+  "tweets": {
+    "tweet1": "https://twitter.com/gansbags/status/1696503572576497858",
+    "tweet2": "https://twitter.com/gansbags/status/1706538382325862415",
+    "tweet3": "https://twitter.com/gansbags/status/1254235570731012096"
+  },
+  "linkedin": {
+    "post1": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7121310268223074304",
+    "post2": "https://www.linkedin.com/embed/feed/update/urn:li:share:7111151173423788032",
+    "post3": "https://www.linkedin.com/embed/feed/update/urn:li:share:7072508767149469696"
+  },
+  "publications": [
+    {
+      "Title": "Dish detection in food platters: A framework for automated diet logging and nutrition management",
+      "Link": "https://arxiv.org/abs/2305.07552",
+      "Anchor Text": "8th International Conference on Computer Vision & Image Processing (CVIP-2023)",
+      "Year of Publication": 2023,
+      "Tags": "Computer Vision",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Graph Signal Processing on protein residue networks helps in studying its biophysical properties",
+      "Link": "https://www.sciencedirect.com/science/article/pii/S0378437123001589",
+      "Anchor Text": "Physica A",
+      "Year of Publication": 2023,
+      "Tags": "Complex Networks",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "RAV1 family members function as transcriptional regulators and play a positive role in plant disease resistance",
+      "Link": "https://onlinelibrary.wiley.com/doi/abs/10.1111/tpj.16114",
+      "Anchor Text": "The Plant Journal",
+      "Year of Publication": 2023,
+      "Tags": "Plant Science",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Investigating the link between miR-34a-5p and TLR6 signaling in sepsis-induced ARDS",
+      "Link": "https://link.springer.com/article/10.1007/s13205-023-03700-1",
+      "Anchor Text": "3 Biotech",
+      "Year of Publication": 2023,
+      "Tags": "Complex Disease",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Camouflage detection and its association with cognitive style: a functional connectivity study",
+      "Link": "https://www.liebertpub.com/doi/abs/10.1089/brain.2023.0044",
+      "Anchor Text": "Brain Connectivity",
+      "Year of Publication": 2023,
+      "Tags": "Brain Networks",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Ratatouille: A tool for Novel Recipe Generation",
+      "Link": "https://ieeexplore.ieee.org/document/9814641",
+      "Anchor Text": "IEEE 38th International Conference on Data Engineering Workshops (ICDEW)",
+      "Year of Publication": 2022,
+      "Tags": "AI",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Object Detection in Indian Food Platters using Transfer Learning with YOLOv4",
+      "Link": "https://ieeexplore.ieee.org/document/9814702",
+      "Anchor Text": "IEEE 38th International Conference on Data Engineering Workshops (ICDEW)",
+      "Year of Publication": 2022,
+      "Tags": "Best Paper Award",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Perturbing Coupled Multivariable Systems",
+      "Link": "https://link.springer.com/chapter/10.1007/978-3-031-33050-6_19",
+      "Anchor Text": "International Symposium on Mathematical and Computational Biology",
+      "Year of Publication": 2022,
+      "Tags": "Nonlinear Dynamics",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "FoodPrint: Computing Carbon Footprint of Recipes",
+      "Link": "https://ieeexplore.ieee.org/document/9814678",
+      "Anchor Text": "IEEE 38th International Conference on Data Engineering Workshops (ICDEW)",
+      "Year of Publication": 2022,
+      "Tags": "Climate Change",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Computational gastronomy: A data science approach to food",
+      "Link": "https://link.springer.com/article/10.1007/s12038-021-00248-1",
+      "Anchor Text": "Journal of Biosciences",
+      "Year of Publication": 2022,
+      "Tags": "Review",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Building Hierarchically Disentangled Language Models for Text Generation with Named Entities",
+      "Link": "https://aclanthology.org/2020.coling-main.3/",
+      "Anchor Text": "28th International Conference on Computational Linguistics COLING",
+      "Year of Publication": 2020,
+      "Tags": "AI",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Nutritional profile estimation in cooking recipes",
+      "Link": "https://ieeexplore.ieee.org/abstract/document/9094134",
+      "Anchor Text": "IEEE 36th International Conference on Data Engineering Workshops",
+      "Year of Publication": 2020,
+      "Tags": "CGAS",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "A named entity based approach to model recipes",
+      "Link": "https://ieeexplore.ieee.org/abstract/document/9094103",
+      "Anchor Text": "IEEE 36th International Conference on Data Engineering Workshops",
+      "Year of Publication": 2020,
+      "Tags": "NLP",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Classification of Cuisines from Sequentially Structured Recipes",
+      "Link": "https://ieeexplore.ieee.org/abstract/document/9094114",
+      "Anchor Text": "IEEE 36th International Conference on Data Engineering Workshops",
+      "Year of Publication": 2020,
+      "Tags": "AL, ML",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Hierarchical clustering of world cuisines",
+      "Link": "https://ieeexplore.ieee.org/abstract/document/9094121",
+      "Anchor Text": "IEEE 36th International Conference on Data Engineering Workshops",
+      "Year of Publication": 2020,
+      "Tags": "CGAS",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "RecipeDB: A resource for exploring recipes",
+      "Link": "https://academic.oup.com/database/article/doi/10.1093/database/baaa077/6006228",
+      "Anchor Text": "Database, Oxford University Press",
+      "Year of Publication": 2020,
+      "Tags": "Database",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "BitterSweet: building machine learning models for predicting the bitter and sweet taste of small molecules",
+      "Link": "https://www.nature.com/articles/s41598-019-43664-y",
+      "Anchor Text": "Scientific Reports",
+      "Year of Publication": 2019,
+      "Tags": "AI, ML",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Computational models for the evolution of world cuisines",
+      "Link": "https://ieeexplore.ieee.org/abstract/document/8750964",
+      "Anchor Text": "IEEE 35th International Conference on Data Engineering Workshops",
+      "Year of Publication": 2019,
+      "Tags": "CGAS",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Culinary evolution models for Indian cuisines",
+      "Link": "https://www.sciencedirect.com/science/article/pii/S0378437118302656",
+      "Anchor Text": "Physica A: Statistical Mechanics and its Applications",
+      "Year of Publication": 2018,
+      "Tags": "CGAS",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Data-driven investigations of culinary patterns in traditional recipes across the world",
+      "Link": "https://ieeexplore.ieee.org/abstract/document/8402036",
+      "Anchor Text": "IEEE 34th International Conference on Data Engineering Workshops",
+      "Year of Publication": 2018,
+      "Tags": "CGAS",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Data-driven analysis of biomedical literature suggests broad-spectrum benevolence of culinary herbs and spices",
+      "Link": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0198030",
+      "Anchor Text": "PLoS One",
+      "Year of Publication": 2018,
+      "Tags": "Health",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "A hierarchical anatomical classification schema for prediction of phenotypic side effects",
+      "Link": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0193959",
+      "Anchor Text": "PLoS One",
+      "Year of Publication": 2018,
+      "Tags": "Health, Maths",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "FlavorDB: a database of flavor molecules",
+      "Link": "https://academic.oup.com/nar/article/46/D1/D1210/4559748",
+      "Anchor Text": "Nucleic Acids Research, Oxford University Press",
+      "Year of Publication": 2018,
+      "Tags": "Database",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "SpiceRx: an integrated resource for the health impacts of culinary spices and herbs",
+      "Link": "https://www.biorxiv.org/content/10.1101/273599v1.abstract",
+      "Anchor Text": "bioRxiv",
+      "Year of Publication": 2018,
+      "Tags": "Health",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Robust Sigmoidal Control Response of C. elegans Neuronal Network",
+      "Link": "https://link.springer.com/chapter/10.1007/978-3-319-60840-2_29",
+      "Anchor Text": "International Joint Conference on Rough Sets",
+      "Year of Publication": 2017,
+      "Tags": "Brain Networks",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Identification of critical regulatory genes in cancer signaling network using controllability analysis",
+      "Link": "https://www.sciencedirect.com/science/article/pii/S0378437117300699",
+      "Anchor Text": "Physica A: Statistical Mechanics and its Applications",
+      "Year of Publication": 2017,
+      "Tags": "Cancer",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "A distance constrained synaptic plasticity model of C. elegans neuronal network",
+      "Link": "https://www.sciencedirect.com/science/article/pii/S0378437116308603",
+      "Anchor Text": "Physica A",
+      "Year of Publication": 2016,
+      "Tags": "Brain Networks",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Graph theoretical biomarkers for schizophrenic brain functional networks",
+      "Link": "https://ieeexplore.ieee.org/document/7980593",
+      "Anchor Text": "International Conference on Signal Processing and Communication",
+      "Year of Publication": 2016,
+      "Tags": "Brain Networks",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Controllability of human cancer signaling network",
+      "Link": "https://ieeexplore.ieee.org/document/7980607",
+      "Anchor Text": "International Conference on Signal Processing and Communication",
+      "Year of Publication": 2016,
+      "Tags": "Cancer",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Differential network analysis reveals evolutionary complexity in secondary metabolism of Rauvolfia serpentina over Catharanthus roseus",
+      "Link": "http://journal.frontiersin.org/article/10.3389/fpls.2016.01229/abstract",
+      "Anchor Text": "Frontiers in Plant Science",
+      "Year of Publication": 2016,
+      "Tags": "Plant Science",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Control of neuronal network in Caenorhabditis elegans",
+      "Link": "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0139204",
+      "Anchor Text": "PLoS ONE",
+      "Year of Publication": 2015,
+      "Tags": "Brain Networks",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Analysis of food pairing in regional cuisines of India",
+      "Link": "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0139539",
+      "Anchor Text": "PLoS ONE",
+      "Year of Publication": 2016,
+      "Tags": "Food Pairing",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Phenotypic side effects prediction by optimizing correlation with chemical and target profiles of drugs",
+      "Link": "https://pubs.rsc.org/en/content/articlelanding/2015/mb/c5mb00312a",
+      "Anchor Text": "Molecular Biosystems (Royal Society of Chemistry)",
+      "Year of Publication": 2015,
+      "Tags": "Drug Discovery",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "SerpentinaDB: a database of plant-derived molecules of Rauvolfia serpentina",
+      "Link": "http://www.biomedcentral.com/1472-6882/15/262",
+      "Anchor Text": "BMC Complementary and Alternative Medicine",
+      "Year of Publication": 2015,
+      "Tags": "Database",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Phytochemica: A platform to explore phytochemicals of medicinal plants",
+      "Link": "http://www.ncbi.nlm.nih.gov/pubmed/26255307",
+      "Anchor Text": "Database (Oxford University Press)",
+      "Year of Publication": 2015,
+      "Tags": "Database",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Tyrosine and tryptophan coated gold nanoparticles inhibit amyloid aggregation of insulin",
+      "Link": "https://link.springer.com/article/10.1007/s00726-015-2046-6",
+      "Anchor Text": "Amino Acids",
+      "Year of Publication": 2015,
+      "Tags": "",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Capsaicin suppresses fibril formation of type I collagen and increases tendon's stability",
+      "Link": "http://link.springer.com/article/10.1007%2Fs00249-014-1002-9",
+      "Anchor Text": "European Biophysical Journal",
+      "Year of Publication": 2015,
+      "Tags": "",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Engineering a thermo-stable superoxide dismutase functional at sub-zero to >50 degree celcius, which also tolerates autoclaving",
+      "Link": "http://www.nature.com/srep/2012/120430/srep00387/full/srep00387.html",
+      "Anchor Text": "Scientific Reports",
+      "Year of Publication": 2012,
+      "Tags": "Structural Bioinfomratics",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Complex Network Models of Protein Structures: Structural correlates of biophysical properties",
+      "Link": "https://www.lap-publishing.com/catalog/details/store/gb/book/978-3-8433-5860-6/complex-network-models-of-protein-structures",
+      "Anchor Text": "Lambert Academic Publishing (Germany)",
+      "Year of Publication": 2010,
+      "Tags": "Book",
+      "Additional Comments": "Book"
+    },
+    {
+      "Title": "Designing evolvable libraries using multi-body potentials",
+      "Link": "https://www.sciencedirect.com/science/article/abs/pii/S0958166909000901",
+      "Anchor Text": "Current Opinion in Biotechnology",
+      "Year of Publication": 2009,
+      "Tags": "Structural Bioinfomratics",
+      "Additional Comments": "COVER-PAGE ARTICLE"
+    },
+    {
+      "Title": "Assortative mixing in protein Contact Networks and protein folding kinetics",
+      "Link": "http://dx.doi.org/10.1093/bioinformatics/btm257",
+      "Anchor Text": "Bioinformatics",
+      "Year of Publication": 2007,
+      "Tags": "Structural Bioinfomratics",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Network properties of protein Structures",
+      "Link": "http://dx.doi.org/10.1016/j.physa.2004.08.046",
+      "Anchor Text": "Physica A",
+      "Year of Publication": 2005,
+      "Tags": "Structural Bioinfomratics",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Analysis of Airport Network of India as a Complex Weighted Network",
+      "Link": "http://dx.doi.org/10.1016/j.physa.2008.01.077",
+      "Anchor Text": "Physica A",
+      "Year of Publication": 2008,
+      "Tags": "",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Complex network view of performance and risks on airport networks",
+      "Link": "http://arxiv.org/abs/0805.0924",
+      "Anchor Text": "Nova Science Publishers, USA, ISBN: 978-1-60692-393-1",
+      "Year of Publication": 2009,
+      "Tags": "Complex Networks",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Modeling Protein Contact Networks",
+      "Link": "http://arxiv.org/abs/0711.2616",
+      "Anchor Text": "PhD Thesis",
+      "Year of Publication": 2006,
+      "Tags": "PhD Thesis",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "The Role of Host Migration on Host-Parasite Population Dynamics",
+      "Link": "https://sites.google.com/site/ganeshbagler/BaglerSinha_NCNSD2005.pdf?attredirects=0",
+      "Anchor Text": "in Proceedings of the Second Conference on Nonlinear Systems and Dynamics",
+      "Year of Publication": 2005,
+      "Tags": "Nonlinear dynamics",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Modelling the Host-Parasite Interaction",
+      "Link": "https://sites.google.com/site/ganeshbagler/Bagler_NCNSD2003.pdf?attredirects=0",
+      "Anchor Text": "in Proceedings of the First Conference on Nonlinear Systems and Dynamics",
+      "Year of Publication": 2003,
+      "Tags": "Nonlinear dynamics",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Non-verbal human communication under varying levels of restrictions: An empirical and computational investigation of Password and Gasekitomu games",
+      "Link": "https://sites.google.com/site/ganeshbagler/chen_et_al._csssbj05.pdf?attredirects=0",
+      "Anchor Text": "SFI CSSS Student Papers, Beijing",
+      "Year of Publication": 2005,
+      "Tags": "Complex Systems",
+      "Additional Comments": ""
+    },
+    {
+      "Title": "Evolution of Food-web Networks in Fluctuating Environments",
+      "Link": "https://sites.google.com/site/ganeshbagler/pawar_et_al._csssbj05.pdf?attredirects=0",
+      "Anchor Text": "SFI CSSS Student Papers, Beijing",
+      "Year of Publication": 2005,
+      "Tags": "Nonlinear Dynamics",
+      "Additional Comments": ""
+    }
+  ]
+}
