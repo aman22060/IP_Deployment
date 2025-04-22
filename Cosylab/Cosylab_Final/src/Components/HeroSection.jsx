@@ -21,7 +21,7 @@ const HeroSection = () => {
 
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % captions.length);
-    }, 2000); // Change caption every 2 seconds
+    }, 3000); // Change caption every 3 seconds
 
     return () => clearInterval(interval);
   }, [captions.length]);
@@ -32,15 +32,12 @@ const HeroSection = () => {
       className={`landing-hero ${zoomIn ? "zoom-in" : ""}`} 
       style={{
         backgroundImage: `url(${heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        position: "relative",
       }}
     >
       <div className="hero-content">
         <div className="container">
           <div className="row justify-content-center text-center"> 
-            <div className="col-sm-8">
+            <div className="col-md-10 col-lg-8">
               <div className="hero-text">
                 <div className="herolider">
                   <ul className="caption-slides">

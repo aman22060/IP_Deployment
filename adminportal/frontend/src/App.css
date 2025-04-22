@@ -1,50 +1,54 @@
+/* Container fills full width */
 .container {
-  padding: 20px;
-}
-
-.team-table {
+  padding: 0;      /* remove the left/right gutter */
   width: 100%;
-  border-collapse: collapse;
-}
-
-.team-table th, .team-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-.table th {
-  background-color: #f2f2f2;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 
+/* Responsive horizontal scroll if needed */
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Full-width tables */
+.team-table,
 .talk-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
-.talk-table th, .talk-table td {
+.team-table th,
+.team-table td,
+.talk-table th,
+.talk-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
+  word-wrap: break-word;
 }
 
-.table th {
+/* Header style */
+.team-table th,
+.talk-table th {
   background-color: #f2f2f2;
 }
 
-/* MyForm.css */
-
+/* Form container fix */
 .form-container {
-  max-width: 100vw;
-  max-height :fit-content;
-  margin: auto;
+  width: 100%;
+  max-width: 100%;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
+  box-sizing: border-box;
 }
 
+/* Inputs */
 .form-group {
   margin-bottom: 15px;
 }
@@ -60,6 +64,7 @@
   box-sizing: border-box;
 }
 
+/* Button */
 .submit-button {
   background-color: #4CAF50;
   color: white;

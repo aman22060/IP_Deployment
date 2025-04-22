@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/style.css";
 import cosylab_logo from "../assets/images/cosylab_logo.png";
+import { UserCircle } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
     <header className={`header ${isScrolled ? "scrolled curved-navbar" : ""}`}>
       <nav
@@ -27,70 +33,72 @@ const Navbar = () => {
         }`}
       >
         <div className="container">
-          <div className="navbar-header d-flex align-items-center">
-            <a className="navbar-brand" href="#">
-              <img
-                src={cosylab_logo}
-                alt="Cosylab Logo"
-                className="navbar-logo"
-              />
-              <span className="navbar-brand-text">CoSyLab</span>
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navigation-nav"
-              aria-controls="navigation-nav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-          </div>
+          <a className="navbar-brand d-flex align-items-center" href="#">
+            <img
+              src={cosylab_logo}
+              alt="Cosylab Logo"
+              className="navbar-logo"
+            />
+            <span className="navbar-brand-text">CoSyLab</span>
+          </a>
+          
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={toggleCollapse}
+            aria-controls="navigation-nav"
+            aria-expanded={!isCollapsed}
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          
           <div
-            className="collapse navbar-collapse justify-content-between"
+            className={`collapse navbar-collapse ${isCollapsed ? '' : 'show'}`}
             id="navigation-nav"
           >
-            <ul className="navbar-nav mx-auto">
+            <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href="#features-section">
-                  Resources
-                </a>
+                <a className="nav-link" href="#features-section">Resources</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#banner-services">
-                  API
-                </a>
+                <a className="nav-link" href="#banner-services">API</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#team-section">
-                  Team
-                </a>
+                <a className="nav-link" href="#team-section">Team</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#news-section">
-                  News
-                </a>
+                <a className="nav-link" href="#news-section">News</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#social-media-section">
-                  Social Media
-                </a>
+                <a className="nav-link" href="#social-media-section">Social Media</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#publication-section">
-                  Publications
-                </a>
+                <a className="nav-link" href="#publication-section">Publications</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#screenshots-section">
-                  Talks
-                </a>
+                <a className="nav-link" href="#screenshots-section">Talks</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#opportunities-section">
-                  Opportunities
+                <a className="nav-link" href="#opportunities-section">Opportunities</a>
+              </li>
+              {/* Desktop-only admin icon */}
+              <li className="nav-item d-none d-lg-block">
+                <a className="nav-link admin-link" href="http://localhost:3000/">
+                  <UserCircle className="admin-icon" />
+                </a>
+              </li>
+              {/* Mobile-only admin text link */}
+              <li className="nav-item d-lg-none">
+                <div className="divider"></div>
+                <a className="nav-link admin-text-link" href="http://localhost:3000/">
+                  <div className="user-icon-container d-flex justify-content-center">
+                    <svg className="user-icon" viewBox="0 0 24 24" width="24" height="24">
+                      <circle cx="12" cy="7" r="5" fill="none" stroke="currentColor" strokeWidth="2" />
+                      <path d="M2 21v-2a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7v2" fill="none" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                  </div>
+                  <span className="admin-text">Admin Portal</span>
                 </a>
               </li>
             </ul>

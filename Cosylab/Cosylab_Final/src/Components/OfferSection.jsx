@@ -28,15 +28,24 @@ const OfferSection = () => {
 
           {/* Offer Boxes */}
           <div className="offer-boxes">
-            <div className="row">
+            <div className="row justify-content-center">
               {/* Box 1 */}
-              <div className="col-sm-4">
+              <div className="col-md-4 col-sm-10 mb-4">
                 <div
                   className="offer-post text-center wow fadeInLeft"
                   data-wow-delay="0"
+                  style={{
+                    maxWidth: "400px",
+                    margin: "0 auto",
+                    height: "100%",
+                    padding: "20px",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                    borderRadius: "8px",
+                    backgroundColor: "#fff"
+                  }}
                 >
                   <div className="offer-icon">
-                    <span className="icon-desktop"></span>
+                    <i className="fas fa-database" style={{ color: "#FF7F50", fontSize: "48px" }}></i>
                   </div>
                   <h4>CREATING FOOD DATABASES</h4>
                   <p>
@@ -48,13 +57,22 @@ const OfferSection = () => {
               </div>
 
               {/* Box 2 */}
-              <div className="col-sm-4">
+              <div className="col-md-4 col-sm-10 mb-4">
                 <div
                   className="offer-post text-center wow fadeInUp"
                   data-wow-delay="0"
+                  style={{
+                    maxWidth: "400px",
+                    margin: "0 auto",
+                    height: "100%",
+                    padding: "20px",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                    borderRadius: "8px",
+                    backgroundColor: "#fff"
+                  }}
                 >
                   <div className="offer-icon">
-                    <span className="icon-piechart"></span>
+                    <i className="fas fa-code" style={{ color: "#FF7F50", fontSize: "48px" }}></i>
                   </div>
                   <h4>BUILDING ALGORITHMS</h4>
                   <p>
@@ -66,13 +84,22 @@ const OfferSection = () => {
               </div>
 
               {/* Box 3 */}
-              <div className="col-sm-4">
+              <div className="col-md-4 col-sm-10 mb-4">
                 <div
                   className="offer-post text-center wow fadeInRight"
                   data-wow-delay="0"
+                  style={{
+                    maxWidth: "400px",
+                    margin: "0 auto",
+                    height: "100%",
+                    padding: "20px",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                    borderRadius: "8px",
+                    backgroundColor: "#fff"
+                  }}
                 >
                   <div className="offer-icon">
-                    <span className="icon-lifesaver"></span>
+                    <i className="fas fa-utensils" style={{ color: "#FF7F50", fontSize: "48px" }}></i>
                   </div>
                   <h4>GENERATING NOVEL RECIPES</h4>
                   <p>

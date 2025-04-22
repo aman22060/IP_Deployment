@@ -14,5 +14,6 @@
             "password": "AK1465$$aman",
             "database": "Admin_Portal"
         }
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }

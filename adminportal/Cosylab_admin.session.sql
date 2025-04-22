@@ -1,5 +1,7 @@
-SELECT * FROM Talks;
-
+SELECT * FROM News_Section;
+UPDATE News_Section
+SET id = id - 2
+WHERE id > 2; 
 
 CREATE TABLE News_Section (
     id INT PRIMARY KEY , 
@@ -12,9 +14,15 @@ CREATE TABLE News_Section (
 );
 DELETE FROM Talks WHERE Id = 15;
 
-
 INSERT INTO Talks (Id, video_url, Title, Speaker)
 VALUES (1, 'https://www.youtube.com/embed/UK0StoErSow', 'Data driven approaches to leveraging food for better health', 'TED Talk');
 
+CREATE TABLE SocialMedia (
+  id        INT AUTO_INCREMENT PRIMARY KEY,
+  platform  ENUM('twitter','linkedin') NOT NULL,
+  url       TEXT NOT NULL
+);
 
-main Title,subtitle,subtitle ,link
+
+SELECT id, platform, url
+  FROM SocialMedia;

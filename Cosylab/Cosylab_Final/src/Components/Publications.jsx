@@ -3,16 +3,28 @@ import config from "../config.json";
 
 const Publications = () => {
   const [publications, setPublications] = useState([]);
+  const [filteredPublications, setFilteredPublications] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [publicationsPerPage] = useState(10);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setPublications(config.publications);
+    setFilteredPublications(config.publications);
   }, []);
+
+  useEffect(() => {
+    const results = publications.filter(publication =>
+      publication.Title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      publication["Year of Publication"].toString().includes(searchTerm)
+    );
+    setFilteredPublications(results);
+    setCurrentPage(1); // Reset to first page when searching
+  }, [searchTerm, publications]);
 
   const indexOfLastPublication = currentPage * publicationsPerPage;
   const indexOfFirstPublication = indexOfLastPublication - publicationsPerPage;
-  const currentPublications = publications.slice(
+  const currentPublications = filteredPublications.slice(
     indexOfFirstPublication,
     indexOfLastPublication
   );
@@ -20,9 +32,13 @@ const Publications = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(publications.length / publicationsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(filteredPublications.length / publicationsPerPage); i++) {
     pageNumbers.push(i);
   }
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const styles = {
     table: {
@@ -69,27 +85,51 @@ const Publications = () => {
     pagination: {
       display: "flex",
       justifyContent: "center",
-      listStyleType: "none",
+      alignItems: "center",
       marginTop: "20px",
     },
     pageItem: {
-      margin: "0 5px",
+      margin: "0 4px",
+      display: "flex",
     },
     pageLink: {
-      padding: "5px 10px",
-      border: "1px solid #ddd",
+      padding: "8px 12px",
       borderRadius: "4px",
       cursor: "pointer",
       color: "#007bff",
       fontWeight: "bold",
+      textDecoration: "none",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      minWidth: "32px",
     },
     activePageLink: {
-      backgroundColor: "#66b3ff",
+      backgroundColor: "#3999d8",
       color: "#fff",
     },
-    hoverEffect: {
-      transform: "scale(1.02)", // Slightly enlarge the row
-      backgroundColor: "#f1f1f1", // Light gray background on hover
+    navLink: {
+      padding: "8px 12px",
+      color: "#555",
+      fontWeight: "bold",
+      cursor: "pointer",
+    },
+    searchContainer: {
+      display: "flex",
+      justifyContent: "flex-end",
+      marginBottom: "20px",
+      alignItems: "center",
+    },
+    searchLabel: {
+      marginRight: "10px",
+      fontWeight: "bold",
+    },
+    searchInput: {
+      padding: "8px 12px",
+      border: "1px solid #ddd",
+      borderRadius: "4px",
+      width: "250px",
+      fontSize: "14px",
     },
   };
 
@@ -102,6 +142,21 @@ const Publications = () => {
           <hr style={{ width: "15%", margin: "0 auto" }} />
           <div className="container w-full mx-auto px-2" style={{ marginTop: "20px" }}>
             <div className="p-8 mt-6 rounded shadow bg-white">
+              {/* Search bar */}
+              <div style={styles.searchContainer}>
+                <label htmlFor="search" style={styles.searchLabel}>
+                  Search:
+                </label>
+                <input
+                  id="search"
+                  type="text"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  placeholder="Search publications..."
+                  style={styles.searchInput}
+                />
+              </div>
+
               <table style={styles.table}>
                 <thead>
                   <tr>
@@ -142,23 +197,41 @@ const Publications = () => {
                   ))}
                 </tbody>
               </table>
-              {/* Pagination */}
-              <ul style={styles.pagination}>
-                {pageNumbers.map((number) => (
-                  <li key={number} style={styles.pageItem}>
-                    <button
-                      onClick={() => paginate(number)}
-                      style={
-                        currentPage === number
-                          ? { ...styles.pageLink, ...styles.activePageLink }
-                          : styles.pageLink
-                      }
+              
+              {/* Updated pagination to match the image */}
+              <div style={styles.pagination}>
+                {pageNumbers.length > 1 && (
+                  <>
+                    <span style={styles.navLink} onClick={() => currentPage > 1 && paginate(currentPage - 1)}>
+                      Previous
+                    </span>
+                    
+                    {pageNumbers.map(number => (
+                      <div 
+                        key={number} 
+                        style={styles.pageItem}
+                        onClick={() => paginate(number)}
+                      >
+                        <div
+                          style={{
+                            ...styles.pageLink,
+                            ...(currentPage === number ? styles.activePageLink : {})
+                          }}
+                        >
+                          {number}
+                        </div>
+                      </div>
+                    ))}
+                    
+                    <span 
+                      style={styles.navLink} 
+                      onClick={() => currentPage < pageNumbers.length && paginate(currentPage + 1)}
                     >
-                      {number}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+                      Next
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
