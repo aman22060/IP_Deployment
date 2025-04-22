@@ -158,7 +158,7 @@ export default function Login({ setIsAuthenticated }) {
                 variant="outlined"
                 size="large"
                 sx={{ mt: 1 }}
-                onClick={() => window.location.href = "https://cosylab.iiitd.edu.in/"}
+                onClick={() => window.location.href = "http://localhost:5173/"}
               >
                 Back to Website
               </Button>

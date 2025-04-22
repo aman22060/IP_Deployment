@@ -33,7 +33,7 @@ const Navbar = () => {
         }`}
       >
         <div className="container">
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <a className="navbar-brand d-flex align-items-center" href="#hero-section">
             <img
               src={cosylab_logo}
               alt="Cosylab Logo"
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <a className="nav-link" href="#publication-section">Publications</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#screenshots-section">Talks</a>
+                <a className="nav-link" href="#talks-section">Talks</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#opportunities-section">Opportunities</a>

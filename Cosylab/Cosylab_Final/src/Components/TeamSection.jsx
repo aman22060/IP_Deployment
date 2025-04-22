@@ -70,6 +70,7 @@ const TeamSection = () => {
   };
 
   return (
+    <div id = 'team-section'>
     <div className="team-section" style={{ 
       padding: windowWidth <= 576 ? "40px 0" : "70px 0",
       backgroundColor: "#f5f5f7"
@@ -272,6 +273,7 @@ const TeamSection = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

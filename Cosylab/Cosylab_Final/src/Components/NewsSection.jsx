@@ -30,6 +30,7 @@ const NewsSection = () => {
     }
 
     return (
+        <div id = 'news-section'>
         <section style={{ padding: "50px 0", backgroundColor: "#f5f5f5" }}>
             <div style={{ textAlign: "center", marginBottom: "30px" }}>
                 <h2 style={{ fontSize: "28px", fontWeight: "bold", color: "#333" }}>News & Views</h2>
@@ -214,6 +215,7 @@ const NewsSection = () => {
             `}
             </style>
         </section>
+        </div>
     );
 };
 
