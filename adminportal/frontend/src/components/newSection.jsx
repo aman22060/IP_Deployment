@@ -188,19 +188,19 @@ export default function NewsSection() {
             <Box component="form" onSubmit={handleSubmit} sx={styles.formLayout} autoComplete="off">
               <Box sx={styles.leftForm}>
                 <TextField
-                  fullWidth label="ID *" name="id" value={formData.id} onChange={handleInputChange} required
+                  fullWidth label="ID" name="id" value={formData.id} onChange={handleInputChange} required
                   {...styles.textField}
                 />
                 <TextField
-                  fullWidth label="Title *" name="Title" value={formData.Title} onChange={handleInputChange} required
+                  fullWidth label="Title" name="Title" value={formData.Title} onChange={handleInputChange} required
                   {...styles.textField}
                 />
                 <TextField
-                  fullWidth label="Link *" name="Tile_Link" type="url" value={formData.Tile_Link}
+                  fullWidth label="Link" name="Tile_Link" type="url" value={formData.Tile_Link}
                   onChange={handleInputChange} required {...styles.textField}
                 />
                 <TextField
-                  fullWidth label="Description *" name="Description" value={formData.Description}
+                  fullWidth label="Description" name="Description" value={formData.Description}
                   onChange={handleInputChange} multiline rows={3} required {...styles.textField}
                 />
                 <Button variant="contained" component="label" sx={{ mb: 2 }}>

@@ -85,8 +85,8 @@ const uploadNone  = multer().none();
 const db = mysql.createConnection({
   host:     process.env.DB_HOST || 'localhost',
   port:     Number(process.env.DB_PORT) || 3306,
-  user:     process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD ||'siddharth',
+  user:     process.env.DB_USER || 'amankumar',
+  password: process.env.DB_PASSWORD ||'AK1465$$aman',
   database: process.env.DB_NAME || 'Admin_Portal',
   connectTimeout: 10000,
 });
@@ -274,7 +274,7 @@ app.delete('/news-section/:id', ensureAdmin, (req, res) => {
 
 // Publications
 app.get('/publications', cors(), uploadNone, (req, res) => {
-  db.query('SELECT * FROM Publications ORDER BY id DESC', (e, r) => e ? res.status(500).send('Error') : res.json(r));
+  db.query('SELECT * FROM Publications ORDER BY Year DESC', (e, r) => e ? res.status(500).send('Error') : res.json(r));
 });
 app.post('/publications', ensureAdmin, express.json(), (req, res) => {
   const { id, TitleLink, Title, Year, Anchor_text, Tags, addComments } = req.body;
@@ -284,7 +284,7 @@ app.post('/publications', ensureAdmin, express.json(), (req, res) => {
     const ins = 'INSERT INTO Publications (id,TitleLink,Title,Year,Anchor_text,Tags,addComments) VALUES(?,?,?,?,?,?,?)';
     db.query(ins, [id, TitleLink, Title, Year, Anchor_text, Tags, addComments], err2 => {
       if (err2) return res.status(500).send('Insert error');
-      db.query('SELECT * FROM Publications ORDER BY id DESC', (e3, r3) => e3 ? res.status(500).send('Fetch error') : res.json(r3));
+      db.query('SELECT * FROM Publications ORDER BY Year DESC', (e3, r3) => e3 ? res.status(500).send('Fetch error') : res.json(r3));
     });
   });
 });
@@ -294,7 +294,7 @@ app.delete('/publications/:id', ensureAdmin, (req, res) => {
     if (err) return res.status(500).json({ message: 'Delete error' });
     db.query('UPDATE Publications SET id=id-1 WHERE id>?', [pid], err2 => {
       if (err2) return res.status(500).json({ message: 'Reindex error' });
-      db.query('SELECT * FROM Publications ORDER BY id DESC', (e, r) => e ? res.status(500).send('Fetch error') : res.json(r));
+      db.query('SELECT * FROM Publications ORDER BY Year DESC', (e, r) => e ? res.status(500).send('Fetch error') : res.json(r));
     });
   });
 });
