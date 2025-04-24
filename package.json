@@ -2,25 +2,25 @@
   "name": "cosylabwebsite",
   "private": true,
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "concurrently": "^9.1.2",
     "lucide-react": "^0.503.0"
   },
   "devDependencies": {
-   "kill-port": "^2.0.1",      
-    "cross-env": "^7.0.3"       
+    "cross-env": "^7.0.3",
+    "kill-port": "^2.0.1",
+    "vite": "^6.3.2"
   },
   "scripts": {
-
     "predev:main": "npx kill-port 5173",
-    "dev:main":    "npm run dev --prefix ./Cosylab/Cosylab_Final",
-
+    "dev:main": "npm run dev --prefix ./CoSyLab_Final",
     "predev:admin": "npx kill-port 3000",
-    "dev:admin":   "cross-env BROWSER=none npm start --prefix ./adminportal/frontend",
-
-
-    "predev:api":   "npx kill-port 3005",
-    "dev:api":     "npm start   --prefix ./adminportal/Backend",
-
-    "dev:all":     "concurrently --kill-others-on-fail \"npm:dev:main\" \"npm:dev:admin\" \"npm:dev:api\""
+    "dev:admin": "cross-env BROWSER=none npm start --prefix ./adminportal/frontend",
+    "predev:api": "npx kill-port 3005",
+    "dev:api": "npm start --prefix ./adminportal/Backend",
+    "dev:all": "concurrently --kill-others-on-fail \"npm:dev:main\" \"npm:dev:admin\" \"npm:dev:api\"",
+    "build:main": "npm run build --prefix ./CoSyLab_Final",
+    "build:admin": "npm run build --prefix ./adminportal/frontend",
+    "build:all": "concurrently \"npm run build:main\" \"npm run build:admin\""
   }
 }

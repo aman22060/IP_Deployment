@@ -85,11 +85,11 @@ const uploadNone  = multer().none();
 const db = mysql.createConnection({
   host:     process.env.DB_HOST || 'localhost',
   port:     Number(process.env.DB_PORT) || 3306,
-  user:     process.env.DB_USER || 'amankumar',
-  password: process.env.DB_PASSWORD ||'AK1465$$aman',
+  user:     process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD ||'Cosylab@123',
   database: process.env.DB_NAME || 'Admin_Portal',
   connectTimeout: 10000,
-});
+}); 
 
 db.connect(err => {
   if (err) {
@@ -155,7 +155,7 @@ app.get('/auth-status', ensureAdmin, (req, res) => {
 
 // Team Members
 app.get('/team-members', cors(), (req, res) => {
-  db.query('SELECT * FROM Team_Members', (e, r) => {
+  db.query('SELECT * FROM team_members', (e, r) => {
     if (e) return res.status(500).send('Error fetching team members');
     r.forEach(m => { if (m.Image) m.Image = m.Image.toString('base64'); });
     res.json(r);
@@ -196,7 +196,7 @@ app.delete('/team-members/:id', ensureAdmin, (req, res) => {
 
 // Talks
 app.get('/talks', cors(), uploadNone, (req, res) => {
-  db.query('SELECT * FROM Talks ORDER BY id', (e, r) => e ? res.status(500).send('Error') : res.json(r));
+  db.query('SELECT * FROM talks ORDER BY id', (e, r) => e ? res.status(500).send('Error') : res.json(r));
 });
 app.post('/talks', ensureAdmin, express.json(), (req, res) => {
   const { id, video_url, Title, Speaker } = req.body;
@@ -234,7 +234,7 @@ app.delete('/talks/:id', ensureAdmin, (req, res) => {
 
 // News Section
 app.get('/news-section', cors(), (req, res) => {
-  db.query('SELECT * FROM News_Section ORDER BY id', (e, r) => {
+  db.query('SELECT * FROM news_section ORDER BY id', (e, r) => {
     if (e) return res.status(500).send('Error');
     r.forEach(n => { if (n.newsImg) n.newsImg = n.newsImg.toString('base64'); });
     res.json(r);
@@ -274,7 +274,7 @@ app.delete('/news-section/:id', ensureAdmin, (req, res) => {
 
 // Publications
 app.get('/publications', cors(), uploadNone, (req, res) => {
-  db.query('SELECT * FROM Publications ORDER BY Year DESC', (e, r) => e ? res.status(500).send('Error') : res.json(r));
+  db.query('SELECT * FROM publications ORDER BY Year DESC', (e, r) => e ? res.status(500).send('Error') : res.json(r));
 });
 app.post('/publications', ensureAdmin, express.json(), (req, res) => {
   const { id, TitleLink, Title, Year, Anchor_text, Tags, addComments } = req.body;
@@ -301,7 +301,7 @@ app.delete('/publications/:id', ensureAdmin, (req, res) => {
 
 // Social Media
 app.get('/social-media', cors(), uploadNone, (req, res) => {
-  db.query('SELECT * FROM SocialMedia ORDER BY id', (e, r) => e ? res.status(500).send('Error') : res.json(r));
+  db.query('SELECT * FROM socialmedia ORDER BY id', (e, r) => e ? res.status(500).send('Error') : res.json(r));
 });
 app.post('/social-media', ensureAdmin, express.json(), (req, res) => {
   let { id, platform, url } = req.body;
