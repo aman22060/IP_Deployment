@@ -116,13 +116,13 @@ export default function Navbar({ setIsAuthenticated }) {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch('/logout', {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/logout`, {
         method: 'POST',
         credentials: 'include'
       });
       if (res.ok) {
         setIsAuthenticated(false);
-        navigate('/login');
+        navigate(`${process.env.REACT_APP_API_BASE_URL}/login`);
       } else {
         console.error('Logout failed');
       }
@@ -132,7 +132,7 @@ export default function Navbar({ setIsAuthenticated }) {
   };
   
   const navItems = [
-    { label: "Dashboard",    to: "/" },
+    { label: "Dashboard",    to: "/dashboard" },
     { label: "Team Members", to: "/team-members" },
     { label: "Talks",        to: "/talks" },
     { label: "News",         to: "/news-section" },

@@ -87,7 +87,7 @@ export default function SocialMedia() {
 
   // Fetch existing posts
   useEffect(() => {
-    fetch('/social-media',{credentials: "include"})
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/social-media`)
       .then(res => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
@@ -134,7 +134,7 @@ export default function SocialMedia() {
     };
 
     try {
-      const res = await fetch('/social-media', {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/social-media`, {
         method: 'POST',
         credentials: "include",
         headers: {'Content-Type':'application/json'},
@@ -155,7 +155,7 @@ export default function SocialMedia() {
   const handleDelete = async id => {
     setError('');
     try {
-      const res = await fetch(`/social-media/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/social-media/${id}`, {
         credentials: "include",
         method: 'DELETE',
       });

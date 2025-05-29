@@ -1,5 +1,5 @@
 // src/components/NewsSection.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import bgImage from "../components/Bgimg.jpeg";
 import {
   Box,
@@ -17,13 +17,12 @@ import {
   TableCell,
   TableBody,
   IconButton,
-  Avatar,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-/* ────────────────────────────────────────────────────────────── */
-/*                            Styles                             */
-/* ────────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────── */
+/*                     Styles                      */
+/* ─────────────────────────────────────────────── */
 const glassStyle = {
   backgroundColor: "rgba(255,255,255,0.2)",
   backdropFilter: "blur(12px)",
@@ -66,20 +65,30 @@ const styles = {
   },
   formCard: { ...glassStyle, maxWidth: 1000, mx: "auto", mb: 4 },
   formHeader: { color: "#fff", mb: 2 },
-  formLayout: { display: "flex", flexDirection: { xs: "column", md: "row" }, gap: 4 },
+  formLayout: {
+    display: "flex",
+    flexDirection: { xs: "column", md: "row" },
+    gap: 4,
+  },
   leftForm: { flex: 1, display: "flex", flexDirection: "column", gap: 2 },
   textField: {
     sx: {
       mb: 2,
       color: "#fff",
-      "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(255,255,255,0.6)" },
+      "& .MuiOutlinedInput-notchedOutline": {
+        borderColor: "rgba(255,255,255,0.6)",
+      },
       "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "#fff" },
     },
     InputLabelProps: { sx: { color: "#fff" } },
     InputProps: { sx: { color: "#fff" } },
   },
-  submitButton: {},
-  previewContainer: { flex: 1, display: "flex", justifyContent: "center", alignItems: "center" },
+  previewContainer: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   previewCard: {
     ...glassStyle,
     width: { xs: "100%", md: 400 },
@@ -89,7 +98,12 @@ const styles = {
     "&:hover img": { transform: "scale(1.05)" },
     "&:hover .overlay": { transform: "translateY(0)" },
   },
-  previewImage: { width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.3s" },
+  previewImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    transition: "transform 0.3s",
+  },
   previewOverlay: {
     position: "absolute",
     bottom: 0,
@@ -101,7 +115,11 @@ const styles = {
     transform: "translateY(100%)",
     transition: "transform 0.3s",
   },
-  previewTitleLink: { color: "#fff", textDecoration: "none", fontWeight: "bold" },
+  previewTitleLink: {
+    color: "#fff",
+    textDecoration: "none",
+    fontWeight: "bold",
+  },
   previewDesc: { mt: 0.5, color: "#ddd" },
   tableContainer: { ...glassStyle, width: "100%", overflowX: "auto" },
   tableHead: { backgroundColor: "rgba(255,255,255,0.1)" },
@@ -114,41 +132,63 @@ export default function NewsSection() {
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [formData, setFormData] = useState({ id: "", Title: "", Tile_Link: "", Description: "" });
+  const [formData, setFormData] = useState({
+    id: "",
+    title: "",
+    link: "",
+    description: "",
+  });
   const [imageFile, setImageFile] = useState(null);
   const fileInputRef = useRef(null);
 
+  const previewUrl = useMemo(() => {
+    if (!imageFile) return placeholder;
+    return URL.createObjectURL(imageFile);
+  }, [imageFile]);
+
   useEffect(() => {
-    fetch("/news-section", { credentials: "include" })
+    return () => {
+      if (previewUrl && previewUrl !== placeholder)
+        URL.revokeObjectURL(previewUrl);
+    };
+  }, [previewUrl]);
+
+  useEffect(() => {
+    fetch("/news", { credentials: "include" })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .then((data) => setNewsItems(data))
-      .catch((e) => setError("Could not load news."))
+      .then(setNewsItems)
+      .catch(() => setError("Could not load news."))
       .finally(() => setLoading(false));
   }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((f) => ({ ...f, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleImageChange = (e) => setImageFile(e.target.files[0]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
     const payload = new FormData();
-    Object.entries(formData).forEach(([k, v]) => payload.append(k, v));
-    if (imageFile) payload.append("Image", imageFile);
+    Object.entries(formData).forEach(([k,v])=>payload.append(k,v));
+    if(imageFile)payload.append("Image",imageFile);
+
 
     try {
-      const res = await fetch("/news-section", {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/news`, {
         method: "POST",
         credentials: "include",
         body: payload,
       });
+
       if (!res.ok) {
-        const msg = await res.text();
-        throw new Error(msg || "Submission failed");
+        const errMsg = await res.text();
+        throw new Error(errMsg || "Submission failed");
       }
+
       const updated = await res.json();
       setNewsItems(updated);
       setFormData({ id: "", Title: "", Tile_Link: "", Description: "" });
@@ -160,19 +200,19 @@ export default function NewsSection() {
   };
 
   const handleDelete = async (id) => {
+    setNewsItems((prev) => prev.filter((m) => m.id !== id));
     setError("");
     try {
-      const res = await fetch(`/news-section/${id}`, {
+      const res = await fetch(`/news/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
       if (!res.ok) throw new Error();
       const updated = await res.json();
-      setNewsItems(Array.isArray(updated) ? updated : newsItems);
-    } catch {
-      setError("Could not delete news.");
-    }
+          if (Array.isArray(updated)) setNewsItems(updated);
+    } catch {}
   };
+
 
   return (
     <Box sx={styles.container}>
@@ -181,77 +221,179 @@ export default function NewsSection() {
         <Card sx={styles.formCard}>
           <CardHeader
             title="Add News"
-            titleTypographyProps={{ align: "center", variant: "h5", sx: styles.formHeader }}
+            titleTypographyProps={{
+              align: "center",
+              variant: "h5",
+              sx: styles.formHeader,
+            }}
             sx={{ backgroundColor: "rgba(0,0,0,0.3)" }}
           />
           <CardContent>
-            <Box component="form" onSubmit={handleSubmit} sx={styles.formLayout} autoComplete="off">
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={styles.formLayout}
+              autoComplete="off"
+            >
               <Box sx={styles.leftForm}>
                 <TextField
-                  fullWidth label="ID" name="id" value={formData.id} onChange={handleInputChange} required
+                  label="ID"
+                  name="id"
+                  value={formData.id}
+                  onChange={handleInputChange}
+                  required
+                  fullWidth
                   {...styles.textField}
                 />
                 <TextField
-                  fullWidth label="Title" name="Title" value={formData.Title} onChange={handleInputChange} required
+                  label="Title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  required
+                  fullWidth
                   {...styles.textField}
                 />
                 <TextField
-                  fullWidth label="Link" name="Tile_Link" type="url" value={formData.Tile_Link}
-                  onChange={handleInputChange} required {...styles.textField}
+                  label="Link"
+                  name="link"
+                  type="url"
+                  value={formData.link}
+                  onChange={handleInputChange}
+                  required
+                  fullWidth
+                  {...styles.textField}
                 />
                 <TextField
-                  fullWidth label="Description" name="Description" value={formData.Description}
-                  onChange={handleInputChange} multiline rows={3} required {...styles.textField}
+                  label="Description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  multiline
+                  rows={3}
+                  required
+                  fullWidth
+                  {...styles.textField}
                 />
                 <Button variant="contained" component="label" sx={{ mb: 2 }}>
                   {imageFile ? "Change Image" : "Upload Image"}
-                  <input hidden accept="image/*" type="file" ref={fileInputRef} onChange={handleImageChange} />
+                  <input
+                    hidden
+                    accept="image/*"
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleImageChange}
+                  />
                 </Button>
-                {error && <Typography color="error" align="center">{error}</Typography>}
-                <Button type="submit" variant="contained" size="large">Submit</Button>
+                {error && (
+                  <Typography color="error" align="center">
+                    {error}
+                  </Typography>
+                )}
+                <Button type="submit" variant="contained" size="large">
+                  Submit
+                </Button>
               </Box>
               <Box sx={styles.previewContainer}>
                 <Card sx={styles.previewCard}>
-                  <Box component="img" src={imageFile ? URL.createObjectURL(imageFile) : placeholder}
-                    alt="Preview" sx={styles.previewImage} />
+                  <Box
+                    component="img"
+                    src={previewUrl}
+                    alt="Preview"
+                    sx={styles.previewImage}
+                  />
                   <Box className="overlay" sx={styles.previewOverlay}>
                     <Typography variant="subtitle1">
-                      <a href={formData.Tile_Link || "#"} target="_blank" rel="noopener noreferrer" style={styles.previewTitleLink}>
-                        {formData.Title || "Title"}
+                      <a
+                        href={formData.link || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={styles.previewTitleLink}
+                      >
+                        {formData.title || "Title"}
                       </a>
                     </Typography>
-                    <Typography variant="body2" sx={styles.previewDesc}>{formData.Description || "Description"}</Typography>
+                    <Typography variant="body2" sx={styles.previewDesc}>
+                      {formData.description || "Description"}
+                    </Typography>
                   </Box>
                 </Card>
               </Box>
             </Box>
           </CardContent>
         </Card>
+
         <TableContainer component={Paper} sx={styles.tableContainer}>
           <Table>
             <TableHead sx={styles.tableHead}>
               <TableRow>
-                {["ID","Title","Link","Description","Image","Action"].map(col => (
-                  <TableCell key={col} sx={styles.headCell}>{col}</TableCell>
-                ))}
+                {["ID", "Title", "Link", "Description", "Image", "Action"].map(
+                  (col) => (
+                    <TableCell key={col} sx={styles.headCell}>
+                      {col}
+                    </TableCell>
+                  )
+                )}
               </TableRow>
             </TableHead>
             <TableBody>
               {loading ? (
-                <TableRow><TableCell colSpan={6} align="center" sx={styles.rowCell}>Loading…</TableCell></TableRow>
+                <TableRow>
+                  <TableCell colSpan={6} align="center" sx={styles.rowCell}>
+                    Loading…
+                  </TableCell>
+                </TableRow>
               ) : newsItems.length === 0 ? (
-                <TableRow><TableCell colSpan={6} align="center" sx={styles.rowCell}>No news found.</TableCell></TableRow>
+                <TableRow>
+                  <TableCell colSpan={6} align="center" sx={styles.rowCell}>
+                    No news found.
+                  </TableCell>
+                </TableRow>
               ) : (
-                newsItems.map(item => (
+                newsItems.map((item) => (
                   <TableRow hover key={item.id}>
                     <TableCell sx={styles.rowCell}>{item.id}</TableCell>
                     <TableCell sx={styles.rowCell}>{item.Title}</TableCell>
-                    <TableCell><a href={item.Tile_Link} target="_blank" rel="noopener noreferrer" style={{color: '#4dabf5'}}>Visit</a></TableCell>
-                    <TableCell sx={styles.descCell}>{item.Description}</TableCell>
                     <TableCell>
-                      {item.newsImg ? <Avatar src={`data:image/jpeg;base64,${item.newsImg}`} variant="rounded"/> : <Typography sx={{color: '#ccc', fontStyle: 'italic'}}>No Image</Typography>}
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "#4dabf5" }}
+                      >
+                        Visit
+                      </a>
                     </TableCell>
-                    <TableCell><IconButton color="error" onClick={() => handleDelete(item.id)}><DeleteIcon/></IconButton></TableCell>
+                    <TableCell sx={styles.descCell}>
+                      {item.Description}
+                    </TableCell>
+                    <TableCell>
+                      {item.newsImg ? (
+                        <Box
+                          component="img"
+                          src={item.newsImg}
+                          alt={item.title}
+                          sx={{
+                            width: 80,
+                            height: 80,
+                            objectFit: "cover",
+                            borderRadius: 2,
+                          }}
+                        />
+                      ) : (
+                        <Typography sx={{ color: "#ccc", fontStyle: "italic" }}>
+                          No Image
+                        </Typography>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <IconButton
+                        color="error"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 ))
               )}

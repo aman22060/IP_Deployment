@@ -117,7 +117,7 @@ export default function TeamMembers() {
 
   // Fetch existing members
   useEffect(() => {
-    fetch("/team-members", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/team-members`   )
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then(setTeamMembers)
       .catch(() => {});
@@ -134,7 +134,7 @@ export default function TeamMembers() {
     if (imageFile) payload.append("Image", imageFile);
 
     try {
-      const res = await fetch("/team-members", {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/team-members`, {
         method: "POST",
         credentials: "include",
         body: payload,
@@ -153,7 +153,7 @@ export default function TeamMembers() {
   const handleDelete = async (id) => {
     setTeamMembers((prev) => prev.filter((m) => m.Id !== id));
     try {
-      const res = await fetch(`/team-members/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/team-members/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

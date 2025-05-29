@@ -84,9 +84,9 @@ export default function Talks() {
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({ id: "", video_url: "", Title: "", Speaker: "" });
 
-  // Fetch existing talks using proxy and include credentials
+
   useEffect(() => {
-    fetch("/talks", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/talks`   )
       .then((res) => {
         if (!res.ok) throw new Error(`Error ${res.status}`);
         return res.json();
@@ -121,7 +121,7 @@ export default function Talks() {
       Speaker: formData.Speaker,
     };
     try {
-      const res = await fetch("/talks", {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/talks`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -142,7 +142,7 @@ export default function Talks() {
   const handleDelete = async (talkId) => {
     try {
       setTalks((prev) => prev.filter((t) => t.id !== talkId));
-      const res = await fetch(`/talks/${talkId}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/talks/${talkId}`, {
         method: "DELETE",
         credentials: "include",
       });

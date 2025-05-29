@@ -100,7 +100,7 @@ export default function Publication() {
 
   // Fetch existing publications via proxy
   useEffect(() => {
-    fetch("/publications", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/publications`   )
       .then((res) => {
         if (!res.ok) throw new Error(`Error ${res.status}`);
         return res.json();
@@ -119,7 +119,7 @@ export default function Publication() {
     e.preventDefault();
     setError("");
     try {
-      const res = await fetch("/publications", {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/publications`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -146,7 +146,7 @@ export default function Publication() {
     setError("");
     try {
       setPubs((prev) => prev.filter((p) => p.id !== id));
-      const res = await fetch(`/publications/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/publications/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

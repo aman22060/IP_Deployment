@@ -13,7 +13,7 @@
   },
   "scripts": {
     "predev:main": "npx kill-port 5173",
-    "dev:main": "npm run dev --prefix ./CoSyLab_Final",
+    "dev:main": "npm run dev --prefix ./Cosylab",
     "predev:admin": "npx kill-port 3000",
     "dev:admin": "cross-env BROWSER=none npm start --prefix ./adminportal/frontend",
     "predev:api": "npx kill-port 3005",

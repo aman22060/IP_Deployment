@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../components/Bgimg.jpeg";
@@ -23,27 +22,21 @@ export default function Login({ setIsAuthenticated }) {
     setError("");
     setLoading(true);
 
-    console.log("🔑 [Login] Sending POST /login with:", password);
     try {
-      const res = await fetch("/login", {
+      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+      const res = await fetch(`${apiBaseUrl}/login`, {
         method: "POST",
-        credentials: "include",
+        credentials: "include",  // Important to send and receive cookies
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),
       });
-
-      console.log("🔑 [Login] Response status:", res.status);
-      const headers = Array.from(res.headers.entries());
-      console.log("🔑 [Login] Response headers:", headers);
 
       let data;
       const contentType = res.headers.get("content-type") || "";
       if (contentType.includes("application/json")) {
         data = await res.json();
-        console.log("🔑 [Login] JSON:", data);
       } else {
         data = await res.text();
-        console.log("🔑 [Login] Text:", data);
       }
 
       if (!res.ok) {
@@ -51,13 +44,12 @@ export default function Login({ setIsAuthenticated }) {
         setPassword("");
         inputRef.current?.focus();
       } else {
-        console.log("🔑 [Login] Success! Redirecting…");
         setIsAuthenticated(true);
         setPassword("");
         navigate("/");
       }
     } catch (err) {
-      console.error("🔑 [Login] Network or unexpected error:", err);
+      console.error(" [Login] Network or unexpected error:", err);
       setError("Network error, please try again.");
     } finally {
       setLoading(false);
@@ -127,7 +119,10 @@ export default function Login({ setIsAuthenticated }) {
                 type="password"
                 value={password}
                 inputRef={inputRef}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (error) setError("");
+                }}
                 error={!!error}
                 helperText={error}
                 disabled={loading}
@@ -150,7 +145,7 @@ export default function Login({ setIsAuthenticated }) {
                 variant="contained"
                 size="large"
                 sx={{ mt: 1 }}
-                disabled={loading}
+                disabled={loading || password.trim().length === 0}
               >
                 {loading ? "Logging in..." : "Login"}
               </Button>
@@ -158,7 +153,10 @@ export default function Login({ setIsAuthenticated }) {
                 variant="outlined"
                 size="large"
                 sx={{ mt: 1 }}
-                onClick={() => window.location.href = "http://localhost:5173/"}
+                onClick={() =>
+                  (window.location.href =
+                    process.env.REACT_APP_MAIN_WEB_API_URL)
+                }
               >
                 Back to Website
               </Button>
