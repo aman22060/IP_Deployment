@@ -154,7 +154,7 @@ export default function NewsSection() {
   }, [previewUrl]);
 
   useEffect(() => {
-    fetch("/news", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/news`)
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .then(setNewsItems)
       .catch(() => setError("Could not load news."))
@@ -203,7 +203,7 @@ export default function NewsSection() {
     setNewsItems((prev) => prev.filter((m) => m.id !== id));
     setError("");
     try {
-      const res = await fetch(`/news/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/news/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

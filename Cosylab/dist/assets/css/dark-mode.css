@@ -1,0 +1,189 @@
+/* Dark Mode for Body */
+body.dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Light Mode for Body */
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+body.dark .theme-toggle-btn {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Text Elements */
+body.dark h1, 
+body.dark h2, 
+body.dark h3, 
+body.dark h4, 
+body.dark h5, 
+body.dark h6, 
+body.dark p, 
+body.dark span, 
+body.dark a, 
+body.dark li, 
+body.dark label, 
+body.dark button, 
+body.dark input, 
+body.dark textarea {
+    color: #ffffff;
+}
+
+body.dark a {
+    color: #bbbbff; /* Light color for links */
+}
+
+/* Table Styles */
+body.dark table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #1e1e1e; /* Dark table background */
+}
+
+body.dark .table-header {
+    background-color: #333333; /* Dark header background */
+    color: #ffffff; /* Light text color */
+    font-weight: bold;
+    text-align: left;
+    padding: 12px;
+}
+
+body.dark .table-row {
+    border-bottom: 1px solid #444444; /* Darker row borders */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+body.dark .table-cell {
+    padding: 12px;
+    vertical-align: middle;
+    color: #000000; /* Light text color */
+}
+
+/* Tags */
+body.dark .tag {
+    display: inline-block;
+    background-color: #4b84cc; /* Darker blue for tags */
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    margin-left: 8px;
+    border-radius: 3px;
+}
+
+body.dark .new-tag {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+/* Pagination */
+body.dark .pagination {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+body.dark .page-item {
+    margin: 0 5px;
+}
+
+body.dark .page-link {
+    padding: 5px 10px;
+    border: 1px solid #444444; /* Darker border for pagination links */
+    border-radius: 4px;
+    cursor: pointer;
+    color: #bbbbff; /* Lighter color for pagination links */
+    font-weight: bold;
+}
+
+body.dark .active-page-link {
+    background-color: #4b84cc; /* Active page background */
+    color: #fff;
+}
+
+/* Hover Effect */
+body.dark .hover-effect {
+    transform: scale(1.02); /* Slightly enlarge the row */
+    background-color: #333333; /* Darker hover background */
+}
+
+/* Screenshots Section */
+body.dark #screenshots-section {
+    background-color: #191818; /* Dark background for the section */
+}
+
+body.dark .title-section h2, 
+body.dark .title-section p {
+    color: #ffffff; /* White text in dark mode */
+}
+
+body.dark .title-section hr {
+    background-color: #444444; /* Darker line in dark mode */
+}
+
+body.dark .screenshots-carousel {
+    background-color: #2c2c2c; /* Dark background for the carousel */
+}
+
+body.dark .shot iframe {
+    border-radius: 6px;
+    width: 100%;
+    height: 250px;
+    border: none;
+    background-color: #000000; /* Dark background for iframe */
+}
+
+/* Hero Section */
+body.dark #hero-section {
+    background-image: url('../assets/images/black-sky.jpg'); /* Dark hero section background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hero Section-2 */
+body.dark .home-hero-2 {
+    background-image: url('../assets/images/black-sky.jpg'); /* Dark hero section-2 background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hero Section-3 */
+body.dark .home-hero-3 {
+    background-image: url('../assets/images/black-sky.jpg'); /* Dark hero section-3 background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hero Section-4 */
+body.dark .home-hero-4 {
+    background-image: url('../assets/images/black-sky.jpg'); /* Dark hero section-4 background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

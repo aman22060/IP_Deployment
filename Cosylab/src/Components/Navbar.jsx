@@ -105,7 +105,9 @@ const Navbar = () => {
               <li className="nav-item d-none d-lg-block">
                 <a
                   className="nav-link admin-link"
-                  href="http://localhost:3000/"
+                  href={
+                    import.meta.env.VITE_ADMIN_FRONTEND_URL
+                  }
                 >
                   <UserCircle className="admin-icon" />
                 </a>

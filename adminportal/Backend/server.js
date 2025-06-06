@@ -124,7 +124,7 @@ function ensureAdmin(req, res, next) {
 // ─── ROUTES ────────────────────────────────────────────────────────
 
 // LOGIN - no auth required, credentials enabled for session
-app.post("/login", corsWithCredentials, async (req, res) => {
+app.post("/api/login", corsWithCredentials, async (req, res) => {
   const { password } = req.body;
   if (!password) return res.status(400).json({ message: "Password required" });
 
@@ -144,7 +144,7 @@ app.post("/login", corsWithCredentials, async (req, res) => {
 });
 
 // LOGOUT - credentials required
-app.post("/logout", corsWithCredentials, (req, res) => {
+app.post("/api/logout", corsWithCredentials, (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).json({ message: "Could not log out" });
     res.clearCookie("admin.sid", {
@@ -164,7 +164,7 @@ app.get("/auth-status", corsWithCredentials, ensureAdmin, (req, res) => {
 // TEAM MEMBERS
 
 // GET all team members - no credentials needed
-app.get("/team-members", corsNoCredentials, (req, res) => {
+app.get("/api/team-members", corsNoCredentials, (req, res) => {
   db.query("SELECT * FROM Team_Members", (err, results) => {
     if (err) return res.status(500).send("Error fetching team members");
     results.forEach((m) => {
@@ -176,7 +176,7 @@ app.get("/team-members", corsNoCredentials, (req, res) => {
 
 // POST new team member - credentials + auth required
 app.post(
-  "/team-members",
+  "/api/team-members",
   corsWithCredentials,
   ensureAdmin,
   upload.single("Image"),
@@ -209,7 +209,7 @@ app.post(
 
 // DELETE team member - credentials + auth required
 app.delete(
-  "/team-members/:id",
+  "/api/team-members/:id",
   corsWithCredentials,
   ensureAdmin,
   (req, res) => {
@@ -238,7 +238,7 @@ app.delete(
 // TALKS
 
 // GET talks - no credentials needed
-app.get("/talks", corsNoCredentials, uploadNone, (req, res) => {
+app.get("/api/talks", corsNoCredentials, uploadNone, (req, res) => {
   db.query("SELECT * FROM talks ORDER BY id", (e, r) =>
     e ? res.status(500).send("Error fetching talks") : res.json(r)
   );
@@ -246,7 +246,7 @@ app.get("/talks", corsNoCredentials, uploadNone, (req, res) => {
 
 // POST talks - credentials + auth required
 app.post(
-  "/talks",
+  "/api/talks",
   corsWithCredentials,
   ensureAdmin,
   express.json(),
@@ -276,7 +276,7 @@ app.post(
 );
 
 // DELETE talks - credentials + auth required
-app.delete("/talks/:id", corsWithCredentials, ensureAdmin, (req, res) => {
+app.delete("/api/talks/:id", corsWithCredentials, ensureAdmin, (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (isNaN(id)) return res.status(400).json({ message: "Invalid ID" });
 
@@ -298,7 +298,7 @@ app.delete("/talks/:id", corsWithCredentials, ensureAdmin, (req, res) => {
 
 // NEWS
 
-app.get("/news", corsNoCredentials, (req, res) => {
+app.get("/api/news", corsNoCredentials, (req, res) => {
   db.query("SELECT * FROM News_Section ORDER BY id", (err, results) => {
     if (err) {
       console.error("Database error fetching news:", err);
@@ -318,7 +318,7 @@ app.get("/news", corsNoCredentials, (req, res) => {
 });
 
 app.post(
-  "/news",
+  "/api/news",
   corsWithCredentials,
   ensureAdmin,
   upload.single("Image"),
@@ -349,7 +349,7 @@ app.post(
               .status(500)
               .json({ message: "Error fetching after insert" });
           r3.forEach((m) => {
-            if (m.newsImg) m.newsImg = m.newsImg.toString("base64");
+            if (m.newsImg && Buffer.isBuffer(m.newsImg)) m.newsImg = "data:image/jpeg;base64,"+ m.newsImg.toString("base64");
           });
           res.json(r3);
         });
@@ -359,7 +359,7 @@ app.post(
 );
 
 // DELETE news - credentials + auth required
-app.delete("/news/:id", corsWithCredentials, ensureAdmin, (req, res) => {
+app.delete("/api/news/:id", corsWithCredentials, ensureAdmin, (req, res) => {
   const id = parseInt(req.params.id, 10);
   if (isNaN(id)) return res.status(400).json({ message: "Invalid ID" });
 
@@ -371,10 +371,10 @@ app.delete("/news/:id", corsWithCredentials, ensureAdmin, (req, res) => {
       if (err2)
         return res.status(500).json({ message: "Error reindexing news" });
 
-      db.query("SELECT * FROM News_Section ORDER BY id", (e, r) => {
+      db.query("SELECT * FROM News_Section ORDER BY id", (e3, r3) => {
         if (e3) return res.status(500).send("Error fetching after insert");
         r3.forEach((m) => {
-          if (m.newsImg) m.newsImg = m.newsImg.toString("base64");
+          if (m.newsImg && Buffer.isBuffer(m.newsImg)) m.newsImg =  "data:image/jpeg;base64,"+  m.newsImg.toString("base64");
         });
         res.json(r3);
       });
@@ -385,7 +385,7 @@ app.delete("/news/:id", corsWithCredentials, ensureAdmin, (req, res) => {
 // PUBLICATIONS
 
 // GET publications - no credentials needed
-app.get("/publications", corsNoCredentials, (req, res) => {
+app.get("/api/publications", corsNoCredentials, (req, res) => {
   db.query("SELECT * FROM Publications ORDER BY id", (e, r) =>
     e ? res.status(500).send("Error fetching publications") : res.json(r)
   );
@@ -393,7 +393,7 @@ app.get("/publications", corsNoCredentials, (req, res) => {
 
 // POST publications - credentials + auth required
 app.post(
-  "/publications",
+  "/api/publications",
   corsWithCredentials,
   ensureAdmin,
   express.json(),
@@ -448,7 +448,7 @@ app.post(
 
 // DELETE publications - credentials + auth required
 app.delete(
-  "/publications/:id",
+  "/api/publications/:id",
   corsWithCredentials,
   ensureAdmin,
   (req, res) => {
@@ -481,7 +481,7 @@ app.delete(
 // SOCIAL MEDIA
 
 // GET social media - no credentials needed
-app.get("/social-media", corsNoCredentials, (req, res) => {
+app.get("/api/social-media", corsNoCredentials, (req, res) => {
   db.query("SELECT * FROM SocialMedia ORDER BY id", (e, r) =>
     e ? res.status(500).send("Error fetching social media") : res.json(r)
   );
@@ -489,7 +489,7 @@ app.get("/social-media", corsNoCredentials, (req, res) => {
 
 // POST social media - credentials + auth required
 app.post(
-  "/social-media",
+  "/api/social-media",
   corsWithCredentials,
   ensureAdmin,
   express.json(),
@@ -526,7 +526,7 @@ app.post(
 
 // DELETE social media - credentials + auth required
 app.delete(
-  "/social-media/:id",
+  "/api/social-media/:id",
   corsWithCredentials,
   ensureAdmin,
   (req, res) => {

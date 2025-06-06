@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/cosylab_admin_new/",
+  "homepage": "/",
   "proxy": "http://localhost:3005",
   "dependencies": {
     "@babel/runtime": "^7.27.0",
